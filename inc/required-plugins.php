@@ -4,43 +4,39 @@ add_action( "tgmpa_register", "register_required_plugins" );
 
 function register_required_plugins() {
 	/**
-	 * Register the required plugins for this theme.
-	 *
-	 * In this example, we register two plugins – one included with the TGMPA library
-	 * and one from the .org repo.
-	 *
-	 * The variable passed to tgmpa_register_plugins() should be an array of plugin
-	 * arrays.
-	 *
-	 * This function is hooked into tgmpa_init, which is fired within the
-	 * TGM_Plugin_Activation class constructor.
-	 */
-	/**
 	 * Array of plugin arrays. Required keys are name and slug.
-	 * If the source is NOT from the .org repo, then source is also required.
 	 */
 	$plugins = array(
-
 		array(
 			"name"               => "WP GraphQL",
-			// The plugin name.
 			"slug"               => "wp-graphql",
-			// The plugin slug (typically the folder name).
 			"source"             => get_stylesheet_directory() . "/install/wp-graphql.zip",
-			// The plugin source.
 			"required"           => true,
-			// If false, the plugin is only "recommended" instead of required.
 			"version"            => "",
-			// E.g. 1.0.0. If set, the active plugin must be this version or higher.
 			"force_activation"   => true,
-			// If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			"force_deactivation" => false,
-			// If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
 			"external_url"       => "",
-			// If set, overrides default API URL and points to an external URL.
 		),
-
-		// This is an example of how to include a plugin from the WordPress Plugin Repository.
+		array(
+			"name"               => "WP GraphiQL",
+			"slug"               => "wp-graphiql",
+			"source"             => get_stylesheet_directory() . "/install/wp-graphiql.zip",
+			"required"           => true,
+			"version"            => "",
+			"force_activation"   => true,
+			"force_deactivation" => false,
+			"external_url"       => "",
+		),
+		array(
+			"name"               => "WP GraphQL ACF",
+			"slug"               => "wp-graphql-acf",
+			"source"             => get_stylesheet_directory() . "/install/wp-graphql-acf.zip",
+			"required"           => true,
+			"version"            => "",
+			"force_activation"   => true,
+			"force_deactivation" => false,
+			"external_url"       => "",
+		),
 		array(
 			"name"     => "Advanced Custom Fields",
 			"slug"     => "advanced-custom-fields",
@@ -55,11 +51,7 @@ function register_required_plugins() {
 	);
 
 	/**
-	 * Array of configuration settings. Amend each line as needed.
-	 * If you want the default strings to be available under your own theme domain,
-	 * leave the strings uncommented.
-	 * Some of the strings are added into a sprintf, so see the comments at the
-	 * end of each line for what each argument will be.
+	 * Array of configuration settings.
 	 */
 	$config = array(
 		"default_path" => "", // Default absolute path to pre-packaged plugins.
