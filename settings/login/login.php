@@ -14,6 +14,7 @@
 		background-image: url("<?php echo get_template_directory_uri(); ?>/public/images/logo.svg") !important;
 		background-size: contain;
 		width: 100%;
+        max-width: 240px;
 	}
 
 </style>

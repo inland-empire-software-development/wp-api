@@ -9,4 +9,6 @@ require_once( "inc/class-tgm-plugin-activation.php" );
 require_once( "inc/required-plugins.php" );
 require_once("inc/graphql.php");
 
+require_once("inc/settings/organization.php");
+
 $IESD = new IESD\Core();
