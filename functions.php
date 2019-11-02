@@ -8,7 +8,9 @@ require_once( __DIR__ . '/core.php' );
 require_once( "inc/class-tgm-plugin-activation.php" );
 require_once( "inc/required-plugins.php" );
 require_once("inc/graphql.php");
-
 require_once("inc/settings/client.php");
+
+// TODO: use auto loader for routes
+require_once("routes/Settings.php");
 
 $IESD = new IESD\Core();
