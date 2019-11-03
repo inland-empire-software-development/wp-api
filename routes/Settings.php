@@ -17,26 +17,30 @@ class Settings {
 
 	function engine_filter( \WP_REST_Request $request ) {
 
+		$content = [];
+
 		if ( isset( $request['name'] ) && ! empty( $request['name'] ) ) {
-
-			$setting = $request['name'];
-
-			$arguments['name'] = strip_tags( $setting );
-
-			$settings = [];
-
-			$settings[$setting] = get_fields('client-settings');
-
-			$response = $this->prepare_response( $settings );
-
-			$query_response = rest_ensure_response( $response );
-
-			return $query_response;
-
+			$name = strip_tags( $request['name'] );
 		}
 
-		return rest_ensure_response( [ "error" => "No name passed in." ] );
+		if ( isset( $request['set'] ) && ! empty( $request['set'] ) ) {
+			$set = strip_tags( $request['set'] );
+		}
+
+		if ( empty( $name ) && ! empty( $set ) ) {
+			$content = $this->prepare_response( [get_field_objects( $set )] );
+		} else if ( ! empty( $name ) && ! empty( $set ) ) {
+			$content = $this->prepare_response( [get_field_object( $name, $set )] );
+		} else {
+			return rest_ensure_response( [ "error" => "No name passed in." ] );
+		}
+
+		$query_response = rest_ensure_response( $content );
+
+		return $query_response;
+
 	}
+
 
 	function query_args() {
 		$args = [];
