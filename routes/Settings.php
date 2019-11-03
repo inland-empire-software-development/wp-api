@@ -12,11 +12,7 @@ class Settings {
 	}
 
 	function prepare_response( array $obj ) {
-
-
-
 		return rest_ensure_response( $obj );
-
 	}
 
 	function engine_filter( \WP_REST_Request $request ) {
