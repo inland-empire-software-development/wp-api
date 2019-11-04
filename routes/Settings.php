@@ -28,9 +28,9 @@ class Settings {
 		}
 
 		if ( empty( $name ) && ! empty( $set ) ) {
-			$content = $this->prepare_response( [get_field_objects( $set )] );
+			$content = $this->prepare_response( [ get_field_objects( $set ) ] );
 		} else if ( ! empty( $name ) && ! empty( $set ) ) {
-			$content = $this->prepare_response( [get_field_object( $name, $set )] );
+			$content = $this->prepare_response( [ get_field_object( $name, $set ) ] );
 		} else {
 			return rest_ensure_response( [ "error" => "No name passed in." ] );
 		}
@@ -41,12 +41,16 @@ class Settings {
 
 	}
 
-
 	function query_args() {
 		$args = [];
 
 		$args['name'] = [
-			'description' => esc_html( 'Requires a setting name.' ),
+			'description' => esc_html( 'Name of field you are requesting.' ),
+			'type'        => 'string'
+		];
+
+		$args['set'] = [
+			'description' => esc_html( 'Name of set for fields you are querying.' ),
 			'type'        => 'string'
 		];
 
