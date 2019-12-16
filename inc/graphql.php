@@ -29,6 +29,10 @@ add_filter( 'register_post_type_args', function ( $args, $post_type ) {
 			$plural   = "Settings";
 			$singular = "Setting";
 			break;
+		case "mentorship":
+			$plural   = "Mentorships";
+			$singular = "Mentorship";
+			break;
 		default:
 			break;
 	}
