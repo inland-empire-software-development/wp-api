@@ -33,6 +33,10 @@ add_filter( 'register_post_type_args', function ( $args, $post_type ) {
 			$plural   = "Mentorships";
 			$singular = "Mentorship";
 			break;
+		case "job":
+			$plural   = "Jobs";
+			$singular = "Job";
+			break;
 		default:
 			break;
 	}
